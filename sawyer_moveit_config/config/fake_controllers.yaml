@@ -8,6 +8,9 @@ controller_list:
       - right_j4
       - right_j5
       - right_j6
+  - name: fake_right_electric_gripper_controller
+    joints:
+      []
   - name: fake_head_controller
     joints:
       - right_j0
