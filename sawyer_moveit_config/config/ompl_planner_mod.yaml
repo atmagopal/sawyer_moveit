@@ -1,0 +1,52 @@
+planner_configs:
+  PRMn5:
+    type: geometric::PRM
+    max_nearest_neighbors: 5  # use k nearest neighbors. default: 10
+  PRMn10:
+    type: geometric::PRM
+    max_nearest_neighbors: 10  # use k nearest neighbors. default: 10
+  PRMn15:
+    type: geometric::PRM
+    max_nearest_neighbors: 15  # use k nearest neighbors. default: 10
+  PRMn20:
+    type: geometric::PRM
+    max_nearest_neighbors: 20  # use k nearest neighbors. default: 10
+  LazyPRMr0:
+    type: geometric::LazyPRM
+    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+  LazyPRMr5:
+    type: geometric::LazyPRM
+    range: 0.005  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+  LazyPRMr20:
+    type: geometric::LazyPRM
+    range: 0.02  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+  LazyPRMr50:
+    type: geometric::LazyPRM
+    range: 0.05  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+  
+
+  # Additional planners copied from anonymus moveit pkg
+right_arm:
+  #default_planner_config: RRTConnectkConfigDefault
+  projection_evaluator: joints(right_j0, right_j1)
+  longest_valid_segment_fraction: 0.005
+  planner_configs:
+    - PRMn5
+    - PRMn10
+    - PRMn15
+    - PRMn20
+    - LazyPRMr0
+    - LazyPRMr5
+    - LazyPRMr20
+    - LazyPRMr50
+electric_gripper:
+  #default_planner_config: RRTConnectkConfigDefault
+  planner_configs:
+    - PRMn5
+    - PRMn10
+    - PRMn15
+    - PRMn20
+    - LazyPRMr0
+    - LazyPRMr5
+    - LazyPRMr20
+    - LazyPRMr50

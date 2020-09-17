@@ -5,6 +5,7 @@
   <xacro:arg name="tip_name" default="right_hand"/>
   <xacro:arg name="electric_gripper" default="false"/>
   <xacro:arg name="controller_box" default="true"/>
+  <xacro:arg name="custom_gripper" default="false"/>
 
   <!--Base Sawyer Collisions-->
   <xacro:include filename="$(find sawyer_moveit_config)/srdf/sawyer_base.srdf.xacro" />
@@ -21,4 +22,11 @@
     <xacro:include filename="$(find sawyer_moveit_config)/srdf/rethink_electric_gripper.srdf.xacro" />
     <xacro:rethink_electric_gripper side="right"/>
   </xacro:if>
+
+  <disable_collisions link1="stp_021709TP00478_base" link2="gripper_tcp" reason="Never" />
+  <disable_collisions link1="stp_021709TP00478_base" link2="stp_021709TP00478_tip" reason="Never" />
+  <disable_collisions link1="right_hand" link2="stp_021709TP00478_base" reason="Never" />
+  <xacro:if value="$(arg custom_gripper)">
+  </xacro:if>
+
 </robot>

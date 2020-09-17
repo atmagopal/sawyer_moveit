@@ -1,0 +1,28 @@
+# This has been somewhat modified for the Sawyer.
+# Also used for editing specific planners.
+# Three different planners from OMPL are run a total of 50 times each, with a
+# maximum of 10 seconds per run.  Output is stored in the /tmp/moveit_benchmarks directory.
+
+benchmark_config:
+    warehouse:
+        host: 127.0.0.1
+        port: 33831
+        scene_name: test     # Required
+    parameters:
+        name: Trial5
+        runs: 10
+        group: right_arm       # Required
+        timeout: 5.0       #in seconds
+        output_directory: /home/deep/RTL/catkin_ws/src/sawyer_moveit/benchmark_results
+        queries: curl2extend
+            #- Sawyerquery2
+            #- Query4
+        start_states: curled_pedestal
+            #- ambg_right_1
+            #- curled_pedestal
+            #- curl_backward
+    planners:
+        - plugin: ompl_interface/OMPLPlanner
+          planners:
+            - RRTkConfigDefault
+            - RRTConnectkConfigDefault

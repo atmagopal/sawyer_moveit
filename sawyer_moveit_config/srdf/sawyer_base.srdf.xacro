@@ -35,10 +35,21 @@
         <joint name="right_j6" value="0" />
     </group_state>
 
+    <group_state name="pick_start" group="right_arm">
+        <joint name="right_j0" value="-1.9125" />
+        <joint name="right_j1" value="-0.4455" />
+        <joint name="right_j2" value="-1.36205" />
+        <joint name="right_j3" value="-2.1716" />
+        <joint name="right_j4" value="0.9732" />
+        <joint name="right_j5" value="1.6793" />
+        <joint name="right_j6" value="0.60250" />
+    </group_state>
+
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a
     robot link and an external frame of reference (considered fixed with
     respect to the robot)-->
-    <virtual_joint name="world" type="fixed" parent_frame="world" child_link="base" />
+   <!--  <virtual_joint name="world" type="fixed" parent_frame="world" child_link="base" /> -->
+   
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot
     could potentially come into collision with any other link in the robot.
     This tag disables collision checking between a specified pair of links. -->

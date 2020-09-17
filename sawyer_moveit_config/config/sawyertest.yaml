@@ -1,0 +1,43 @@
+# This has been somewhat modified for the Sawyer.
+
+
+#This is an example configuration that loads the "Kitchen" scene from the
+# local MoveIt! warehouse and benchmarks the "manipulator" group in the Pick1
+# query using the Start1 initial state (all pre-stored in the local warehouse)
+
+# Three different planners from OMPL are run a total of 50 times each, with a
+# maximum of 10 seconds per run.  Output is stored in the /tmp/moveit_benchmarks directory.
+
+benchmark_config:
+    warehouse:
+        host: 127.0.0.1
+        port: 33831
+        scene_name: Emptyspace     # Required
+    parameters:
+        name: Preliminary
+        runs: 30
+        group: right_arm       # Required
+        timeout: 10.0       #in seconds
+        output_directory: /home/deep/RTL/catkin_ws/src/sawyer_moveit/benchmark_results
+        queries: Ambgl2Ambgr
+            #- Sawyerquery2
+            #- Query4
+        start_states: ambg_right_1
+           # super_start_gazebo_set
+            #extend_front
+    planners:
+        - plugin: ompl_interface/OMPLPlanner
+          planners:
+            - RRTkConfigDefault
+            - RRTConnectkConfigDefault
+            - BiTRRT
+            - PRMkConfigDefault
+            - LazyPRM
+            - ESTkConfigDefault
+            - ProjEST
+            - FMT
+            - PDST
+            - STRIDE
+            - SBLkConfigDefault
+            - BKPIECEkConfigDefault
+            - SPARS
