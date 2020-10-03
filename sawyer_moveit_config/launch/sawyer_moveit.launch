@@ -18,14 +18,21 @@
   <!-- <arg name="tip_name"     if="$(arg electric_gripper)" default="right_gripper_tip"/>
   <arg name="tip_name" unless="$(arg electric_gripper)" default="right_hand"/> -->
   
+  <node name="joint_trajectory_action_server" pkg="intera_interface" type="joint_trajectory_action_server.py"/>
+  
   <arg name="custom_gripper" default="false"/>
+  <arg name="gpd" default="false"/>
+
   <node if="$(arg custom_gripper)" pkg="tf2_ros" type="static_transform_publisher" name="link1_broadcaster" args="0 0 0 -1.5708 0 0 stp_021709TP00478_tip gripper_tcp" />
   <node if="$(arg custom_gripper)" pkg="tf2_ros" type="static_transform_publisher" name="link2_broadcaster" args="0 0 -0.17 0 0 0 right_hand fake_ee" />
-  <!-- <node if="$(arg custom_gripper)" pkg="tf2_ros" type="static_transform_publisher" name="link3_broadcaster" args="0 -0.07 0.07 1.57 -1.3 0 right_hand camera_link" /> -->
-  <node pkg="tf2_ros" type="static_transform_publisher" name="link3_broadcaster" args="0.02 -0 0.27 0 0.38 0 head camera_link" />
+  <node if="$(arg custom_gripper)" pkg="tf2_ros" type="static_transform_publisher" name="link3_broadcaster" args="0 -0.07 0.07 1.57 -1.3 0 right_hand camera_link" />
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="link3_broadcaster" args="0.02 -0 0.27 0 0.38 0 head camera_link" /> -->
   
   <arg name="tip_name"     if="$(arg custom_gripper)" default="stp_021709TP00478_tip"/>
   <arg name="tip_name" unless="$(arg custom_gripper)" default="right_hand"/>
+
+  <!-- GPD Grasping server launch -->
+  <include if="$(arg gpd)" file="$(find gpd_ros)/launch/server.launch"/>
    
   <!-- Add planning context launch file -->
   <include file="$(find sawyer_moveit_config)/launch/planning_context.launch">
