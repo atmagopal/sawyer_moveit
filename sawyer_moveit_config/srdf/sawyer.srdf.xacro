@@ -25,6 +25,7 @@
 
   <disable_collisions link1="stp_021709TP00478_base" link2="gripper_tcp" reason="Never" />
   <disable_collisions link1="stp_021709TP00478_base" link2="stp_021709TP00478_tip" reason="Never" />
+  <disable_collisions link1="stp_021709TP00478_tip" link2="right_l6" reason="Never" />
   <disable_collisions link1="right_hand" link2="stp_021709TP00478_base" reason="Never" />
   <xacro:if value="$(arg custom_gripper)">
   </xacro:if>
