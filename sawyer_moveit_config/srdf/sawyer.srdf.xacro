@@ -27,6 +27,16 @@
   <disable_collisions link1="stp_021709TP00478_base" link2="stp_021709TP00478_tip" reason="Never" />
   <disable_collisions link1="stp_021709TP00478_tip" link2="right_l6" reason="Never" />
   <disable_collisions link1="right_hand" link2="stp_021709TP00478_base" reason="Never" />
+  <disable_collisions link1="right_hand" link2="bigass_gripper" reason="Never" />
+  <disable_collisions link1="bigass_gripper" link2="stp_021709TP00478_base" reason="Never" />
+  <disable_collisions link1="bigass_gripper" link2="stp_021709TP00478_tip" reason="Never" />
+  <disable_collisions link1="bigass_gripper" link2="gripper_tcp" reason="Never" />
+  <disable_collisions link1="bigass_gripper" link2="right_l6" reason="Never" />
+
+  <!-- Head Camera collsions -->
+  <disable_collisions link1="head" link2="camera_head_bottom_screw_frame" reason="Never" />
+  <disable_collisions link1="head" link2="camera_head_link" reason="Never" />
+
   <xacro:if value="$(arg custom_gripper)">
   </xacro:if>
 

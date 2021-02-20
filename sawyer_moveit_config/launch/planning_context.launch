@@ -6,6 +6,8 @@
   <arg name="tip_name" default="right_hand"/>
   <!-- Add controller box collision shape to check for link collisions if set to true-->
   <arg name="controller_box" default="true"/>
+  <arg name="pedestal" default="false"/>
+
 
   <arg name="custom_gripper" default="false"/>
 
