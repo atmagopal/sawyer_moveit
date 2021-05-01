@@ -34,8 +34,11 @@
   <node if="$(arg custom_gripper)" pkg="tf2_ros" type="static_transform_publisher" name="link3_broadcaster" args="0 0 0.19 0 0 0 right_hand gripper_tcp" />
 
   <node if="$(arg custom_gripper)" pkg="tf2_ros" type="static_transform_publisher" name="link98_broadcaster" args="0.055 -0.015 0.0950 0 -1.97  3.14 right_hand camera_link" />
-  <node if="$(arg custom_gripper)" pkg="tf2_ros" type="static_transform_publisher" name="link99_broadcaster" args="0.06 0 0.214 0 0.35 0.07 head camera_head_link" />
-  <node if="$(arg custom_gripper)" pkg="tf2_ros" type="static_transform_publisher" name="link97_broadcaster" args="0.05 0.0 0.03  0 0 0 right_hand bigass_gripper" />
+  <node if="$(arg custom_gripper)" pkg="tf2_ros" type="static_transform_publisher" name="link99_broadcaster" args="0.06 0 0.204 0 0.63 0.07 head camera_head_link" />
+  <node if="$(arg custom_gripper)" pkg="tf2_ros" type="static_transform_publisher" name="link97_broadcaster" args="0.05 0.0 0.21  0 0 0 right_hand bigass_gripper" />
+  
+  <node if="$(arg custom_gripper)" pkg="serial_communication" type="gripper.py" name="gripper_serial_communication" />
+  <node if="$(arg custom_gripper)" pkg="grasp_slip_simple" type="grasp_slip_simple.py" name="slip_detection_simple" />
 
   <arg if="$(arg custom_gripper)" name="tip_name" default="stp_021709TP00478_tip"/>
   <!-- <arg name="tip_name"     if="$(arg custom_gripper)" default="fake_ee"/> -->
@@ -69,6 +72,8 @@
     <arg name="info" value="true"/>
     <arg name="debug" value="$(arg debug)"/>
   </include>
+
+  <node if="$(arg realsense)" pkg="pcmatch" type="filter_cloud" name="camera_head_filter_cloud" />
 
   <include file="$(find sawyer_moveit_config)/launch/moveit_rviz.launch">
     <arg name="config" value="$(arg config)" />
